@@ -7,8 +7,10 @@ int isNeg(int x){
 }
 
 int abs(int x){
-	if(isNeg(x)) return minus(x);
-	else return x;
+	if(isNeg(x)) 
+		return minus(x);
+	else 
+		return x;
 }
 
 
