@@ -59,10 +59,10 @@ unsigned char rotate(unsigned char c, int bits){
 
 int main()
 {
-	rotate(1,0);	
-	rotate(2,0);	
-	rotate(3,0);	
-	rotate(11,0);	
+	rotate(1,1);	
+	rotate(2,1);	
+	rotate(3,1);	
+	rotate(11,1);	
 	printf("\n");
 	
 	rotate(1,-1);	
