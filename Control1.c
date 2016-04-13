@@ -1,3 +1,4 @@
+#include <stdio.h>
 int minus(int x){
 	return 1+~x;
 }
@@ -16,5 +17,7 @@ int abs(int x){
 
 int main()
 {
-	
+	printf("%i \n",abs(-1));
+	printf("%i \n",abs(-20));
+	printf("%i \n",abs(20));
 }
