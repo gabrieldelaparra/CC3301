@@ -10,9 +10,10 @@ int y = 20;
 int main()
 {
 	int i, a[10];
-	for(i=0;i<=10;i++)
+	for(i=0;i<10;i++) //Loopea hasta el infinito;
 		a[i]=0;
-	return a[5];
+	printf("%p", a[5]);
+	
 	// arrayTest();
 	
 	// int* p = intMalloc();
