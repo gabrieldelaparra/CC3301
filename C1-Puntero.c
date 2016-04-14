@@ -2,6 +2,18 @@
 
 int y = 20;
 
+
+
+int main()
+{
+	// swapDoubles();
+	// swapInts();
+	printf("\n");
+	// desreferencia();
+	// basicoPunteros();
+	// basico();
+}
+
 void swapDoubleP(double *a, double *b){
 	double temp = *a;
 	*a = *b;
@@ -23,15 +35,6 @@ void swapDoubles(){
 	swapDoubleP(&a,&b);
 	printf("a: %f \n",a);
 	printf("b: %f \n",b);
-}
-
-int main()
-{
-	swapDoubles();
-	printf("\n");
-	// desreferencia();
-	// basicoPunteros();
-	// basico();
 }
 
 void swapInt(int a, int b){
