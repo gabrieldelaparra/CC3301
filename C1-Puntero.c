@@ -1,11 +1,27 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 int y = 20;
 
-
+int arrayTest(){
+	int *p = malloc(10*sizeof(int));
+	
+	int s = 0;
+	int i;
+	for(i=0;i<10;i++)
+		*(p+i) = i*i;
+	for(i=0;i<10;i++)
+		printf("p[%i]: %d",i,*(p+i));
+}
 
 int main()
 {
+	arrayTest();
+	
+	// int* p = intMalloc();
+	// printf("p: %i\n", *p);
+	// free(p);
+	// printf("p: %i\n", *p); //Cualquier cosa;
+	
 	// swapPtrs();
 	// swapDoubles();
 	// swapInts();
@@ -13,6 +29,15 @@ int main()
 	// basicoPunteros();
 	// basico();
 }
+
+int* intMalloc()
+{
+	int *q = malloc(sizeof(int));
+	*q = 2;
+	printf("q: %i\n",*q);
+	return q;
+}
+
 
 void swapPtrVal(int** ppa, int** ppb){
 	int temp = **ppa;
