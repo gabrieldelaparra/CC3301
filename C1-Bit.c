@@ -130,6 +130,13 @@ unsigned int fullMask(int i){
 	return mask;
 }
 
+unsigned int reverseMask(int i){
+	unsigned int mask = i==intSize ? (-1) : ~((-1)<<i);
+	printf("Mask: ");
+	printBinaryUInt(mask);
+	return mask;
+}
+
 unsigned int customMask(int i, int k){
 	unsigned int mask = k == intSize ? -1 : ((1 << k) - 1) << intSize - i - k;
 	printf("Mask: ");
@@ -194,10 +201,28 @@ int unset1(int n){
 
 int main()
 {
-	printf("PBits: %i \n", posicionBits(8,2,2));
-	printf("PBits: %i \n", posicionBits(9,0,1));
-	printf("PBits: %i \n", posicionBits(5161651,59,6)); //14
-	printf("PBits: %i \n", posicionBits(5161651,0xFF,6)); //-1
+	reverseMask(4);
+	reverseMask(0);
+	reverseMask(31);
+	reverseMask(32);
+	printf("\n");
+	
+	fullMask(28);
+	fullMask(32);	
+	fullMask(1);
+	fullMask(0);
+	printf("\n");
+	
+	customMask(28,4);
+	customMask(0,0);
+	customMask(1,31);
+	customMask(0,32);
+	printf("\n");
+	
+	// printf("PBits: %i \n", posicionBits(8,2,2));
+	// printf("PBits: %i \n", posicionBits(9,0,1));
+	// printf("PBits: %i \n", posicionBits(5161651,59,6)); //14
+	// printf("PBits: %i \n", posicionBits(5161651,0xFF,6)); //-1
 	
 	
 	// printf("MSB: %i \n", bitMasSignificativo(0x1F));
