@@ -106,7 +106,7 @@ int bits1(int n){
 	int i = 0;
 	int count = 0;
 	for (i = 0;i < 31;i++){ //Hasta 31, para no considerar el signo;
-		int mask = (1<<i);
+		unsigned int mask = (1<<i);
 		int iBit = n & mask;
 		if(iBit > 0)
 			count++;
@@ -127,11 +127,31 @@ int intSize(){
 	return count;
 }
 
+int unset1(int n){
+	printf("SRC: ");
+	printBinaryInt(n);
+	int i = 0;
+	for(i = 0; i < 32; i++){
+		unsigned int mask = 1<<(32-i);	
+		int masked = n&mask;
+		if(masked > 0){							
+			int r = ~mask & n;
+			printf("UST1: ");
+			printBinaryInt(r);
+			return r;
+		}
+	}
+	return -1;
+}
+
 
 
 int main()
 {
-	intSize();
+	unset1(0x70);
+	unset1(0);
+	unset1(1);
+	//intSize();
 	
 	// bits1(0x048b6048);
 	// bits1(0xFFFFFFFF);
