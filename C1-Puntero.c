@@ -2,20 +2,18 @@
 #include <stdlib.h>
 int y = 20;
 
-int arrayTest(){
-	int *p = malloc(10*sizeof(int));
-	
-	int s = 0;
-	int i;
-	for(i=0;i<10;i++)
-		*(p+i) = i*i;
-	for(i=0;i<=11;i++)
-		printf("p[%i]: %d\n",i,p[i]);
-}
+
+
+
+
 
 int main()
 {
-	arrayTest();
+	int i, a[10];
+	for(i=0;i<=10;i++)
+		a[i]=0;
+	return a[5];
+	// arrayTest();
 	
 	// int* p = intMalloc();
 	// printf("p: %i\n", *p);
@@ -28,6 +26,17 @@ int main()
 	// desreferencia();
 	// basicoPunteros();
 	// basico();
+}
+
+int arrayTest(){
+	int *p = malloc(10*sizeof(int));
+	
+	int s = 0;
+	int i;
+	for(i=0;i<10;i++)
+		*(p+i) = i*i;
+	for(i=0;i<=11;i++) //No da error;
+		printf("p[%i]: %p\n",i,p[i]);
 }
 
 int* intMalloc()
