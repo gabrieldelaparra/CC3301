@@ -36,6 +36,24 @@ void printBinaryInt(int b){
 	printf("\n");
 }
 
+
+
+int posicionBits(int x, int p, int n){
+	printf("X: ");
+	printBinaryInt(x);
+	printf("P: ");
+	printBinaryInt(p);
+	int intSize = sizeof(x)*8;
+	int i = 0;
+	for(;i<intSize-n;i++){
+		int mask = (1<<(n+i))-1;
+		int masked = (x&mask)>>i;
+		if(masked==p)
+			return i;
+	}
+	return -1;
+}
+
 int recursiva(unsigned int x, int s){
 	unsigned int mask = (1<<(s>>1))-1;
 
@@ -176,15 +194,21 @@ int unset1(int n){
 
 int main()
 {
-	printf("MSB: %i \n", bitMasSignificativo(0x1F));
-	printf("MSB: %i \n", bitMasSignificativo(0x3F));
-	printf("MSB: %i \n", bitMasSignificativo(0x1FFF));
-	printf("MSB: %i \n", bitMasSignificativo(0x0));
-	printf("MSB: %i \n", bitMasSignificativo(0x1));
-	printf("MSB: %i \n", bitMasSignificativo(0x007FFFFF));
-	printf("MSB: %i \n", bitMasSignificativo(0x01FFFFFF));
-	printf("MSB: %i \n", bitMasSignificativo(0x11FFFFFF));
-	printf("MSB: %i \n", bitMasSignificativo(0xFFFFFFFF));
+	printf("PBits: %i \n", posicionBits(8,2,2));
+	printf("PBits: %i \n", posicionBits(9,0,1));
+	printf("PBits: %i \n", posicionBits(5161651,59,6)); //14
+	printf("PBits: %i \n", posicionBits(5161651,0xFF,6)); //-1
+	
+	
+	// printf("MSB: %i \n", bitMasSignificativo(0x1F));
+	// printf("MSB: %i \n", bitMasSignificativo(0x3F));
+	// printf("MSB: %i \n", bitMasSignificativo(0x1FFF));
+	// printf("MSB: %i \n", bitMasSignificativo(0x0));
+	// printf("MSB: %i \n", bitMasSignificativo(0x1));
+	// printf("MSB: %i \n", bitMasSignificativo(0x007FFFFF));
+	// printf("MSB: %i \n", bitMasSignificativo(0x01FFFFFF));
+	// printf("MSB: %i \n", bitMasSignificativo(0x11FFFFFF));
+	// printf("MSB: %i \n", bitMasSignificativo(0xFFFFFFFF));
 	
 	// unset1(0x70);
 	// unset1(0);
