@@ -10,7 +10,7 @@ int arrayTest(){
 	for(i=0;i<10;i++)
 		*(p+i) = i*i;
 	for(i=0;i<=11;i++)
-		printf("p[%i]: %d\n",i,*(p+i));
+		printf("p[%i]: %d\n",i,p[i]);
 }
 
 int main()
