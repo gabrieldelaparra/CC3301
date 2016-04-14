@@ -38,20 +38,9 @@ void printBinaryInt(int b){
 
 int recursiva(unsigned int x, int s){
 	unsigned int mask = (1<<(s>>1))-1;
-	
-	// printf("Size: %i \n", s);
-	
-	// printf("x: ");
-	// printBinaryUInt(x);
-	// printf("Mask: ");
-	// printBinaryUInt(mask);
-	// printf("nMask: ");
-	// printBinaryUInt(~mask);
-		
+
 	unsigned nMasked = (x&~mask)>>(s>>1);
 	unsigned masked = x&mask;
-	
-	// printf("nM: %i || m: %i \n", nMasked, masked);
 	
 	if	(!s) 
 		return 0;
