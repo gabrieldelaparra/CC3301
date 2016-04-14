@@ -259,85 +259,85 @@ int main()
 	repBits(0x89abcdef, 0, 32, 0x12345678); //
 	printf("\n");
 	
-	// printf("SizeOfInt: %i \n", sizeOfInt());
-	// printf("is64Bits: %i \n", is64Bits());
-	// printf("isUnsignedChar: %i \n", isUnsignedChar());
+	printf("SizeOfInt: %i \n", sizeOfInt());
+	printf("is64Bits: %i \n", is64Bits());
+	printf("isUnsignedChar: %i \n", isUnsignedChar());
 	
-	// reverseMask(4);
-	// reverseMask(0);
-	// reverseMask(31);
-	// reverseMask(32);
-	// printf("\n");
+	reverseMask(4);
+	reverseMask(0);
+	reverseMask(31);
+	reverseMask(32);
+	printf("\n");
 	
-	// fullMask(28);
-	// fullMask(32);	
-	// fullMask(1);
-	// fullMask(0);
-	// printf("\n");
+	fullMask(28);
+	fullMask(32);	
+	fullMask(1);
+	fullMask(0);
+	printf("\n");
 	
-	// customMask(28,4);
-	// customMask(0,0);
-	// customMask(1,31);
-	// customMask(0,32);
-	// printf("\n");
+	customMask(28,4);
+	customMask(0,0);
+	customMask(1,31);
+	customMask(0,32);
+	printf("\n");
 	
-	// printf("PBits: %i \n", posicionBits(8,2,2));
-	// printf("PBits: %i \n", posicionBits(9,0,1));
-	// printf("PBits: %i \n", posicionBits(5161651,59,6)); //14
-	// printf("PBits: %i \n", posicionBits(5161651,0xFF,6)); //-1
+	printf("PBits: %i \n", posicionBits(8,2,2));
+	printf("PBits: %i \n", posicionBits(9,0,1));
+	printf("PBits: %i \n", posicionBits(5161651,59,6)); //14
+	printf("PBits: %i \n", posicionBits(5161651,0xFF,6)); //-1
 	
 	
-	// printf("MSB: %i \n", bitMasSignificativo(0x1F));
-	// printf("MSB: %i \n", bitMasSignificativo(0x3F));
-	// printf("MSB: %i \n", bitMasSignificativo(0x1FFF));
-	// printf("MSB: %i \n", bitMasSignificativo(0x0));
-	// printf("MSB: %i \n", bitMasSignificativo(0x1));
-	// printf("MSB: %i \n", bitMasSignificativo(0x007FFFFF));
-	// printf("MSB: %i \n", bitMasSignificativo(0x01FFFFFF));
-	// printf("MSB: %i \n", bitMasSignificativo(0x11FFFFFF));
-	// printf("MSB: %i \n", bitMasSignificativo(0xFFFFFFFF));
+	printf("MSB: %i \n", bitMasSignificativo(0x1F));
+	printf("MSB: %i \n", bitMasSignificativo(0x3F));
+	printf("MSB: %i \n", bitMasSignificativo(0x1FFF));
+	printf("MSB: %i \n", bitMasSignificativo(0x0));
+	printf("MSB: %i \n", bitMasSignificativo(0x1));
+	printf("MSB: %i \n", bitMasSignificativo(0x007FFFFF));
+	printf("MSB: %i \n", bitMasSignificativo(0x01FFFFFF));
+	printf("MSB: %i \n", bitMasSignificativo(0x11FFFFFF));
+	printf("MSB: %i \n", bitMasSignificativo(0xFFFFFFFF));
 	
-	// unset1(0x70);
-	// unset1(0);
-	// unset1(1);
-	// printf("\n");
+	unset1(0x70);
+	unset1(0);
+	unset1(1);
+	printf("\n");
 	
-	// int_Size();
-	// printf("\n");
+	int_Size();
+	printf("\n");
 	
-	// bits1(0x048b6048);
-	// bits1(0xFFFFFFFF);
-	// bits1(0x7FFFFFFF);
-	// bits1(0x1);
-	// printf("\n");
+	bits1(0x048b6048);
+	bits1(0xFFFFFFFF);
+	bits1(0x7FFFFFFF);
+	bits1(0x1);
+	printf("\n");
 	
-	// extractMask(0xFFFFFFFF,0,16);
-	// extractMask(0xFFFFFFFF,1,30);
-	// extractMask(0xFFFFFFFF,8,16);
-	// extractMask(0xFFFFFFFF,0,0);
-	// extractMask(0xFFFFFFFF,0,1);	
-	// extractMask(0xFFFFFFFF,0,32);	
-	// extractMask(0xFFFFFFFF,31,1);
-	// extractMask(0xFFFFFFFF,32,0);
-	// extractMask(0x048b6048,0,4);
-	// extractMask(0x048b6048,8,12);
-	// printf("\n");
+	extractMask(0xFFFFFFFF,0,16);
+	extractMask(0xFFFFFFFF,1,30);
+	extractMask(0xFFFFFFFF,8,16);
+	extractMask(0xFFFFFFFF,0,0);
+	extractMask(0xFFFFFFFF,0,1);	
+	extractMask(0xFFFFFFFF,0,32);	
+	extractMask(0xFFFFFFFF,31,1);
+	extractMask(0xFFFFFFFF,32,0);
+	extractMask(0x048b6048,0,4);
+	extractMask(0x048b6048,8,12);
+	printf("\n");
 	
-	// rotate(1,1);	
-	// rotate(2,1);	
-	// rotate(3,1);	
-	// rotate(11,1);	
-	// printf("\n");
+	rotate(1,1);	
+	rotate(2,1);	
+	rotate(3,1);	
+	rotate(11,1);	
+	printf("\n");
 	
-	// rotate(1,-1);	
-	// rotate(2,-1);	
-	// rotate(3,-1);	
-	// rotate(11,-1);	
-	// printf("\n");
+	rotate(1,-1);	
+	rotate(2,-1);	
+	rotate(3,-1);	
+	rotate(11,-1);	
+	printf("\n");
 	
-	// printf("%i \n",abs(-1));
-	// printf("%i \n",abs(-20));
-	// printf("%i \n",abs(20));
-	// printf("%i \n",abs(0));
-	// printf("%i \n",abs(-0));
+	printf("%i \n",abs(-1));
+	printf("%i \n",abs(-20));
+	printf("%i \n",abs(20));
+	printf("%i \n",abs(0));
+	printf("%i \n",abs(-0));
 }
