@@ -56,10 +56,13 @@ unsigned char rotateRight(unsigned char c){
 unsigned char rotate(unsigned char c, int bits){
 	printf("SRC: ");
 	printBinaryChar(c);
+	unsigned char r = 0;
 	if(bits>=0)
-		return rotateRight(c);
+		r = rotateRight(c);
 	else
-		return rotateLeft(c);
+		r = rotateLeft(c);
+	printf("\n");
+	return r;
 }
 
 unsigned int fullMask(int len){
@@ -77,11 +80,13 @@ unsigned int customMask(int i, int k){
 }
 
 unsigned int extractMask(unsigned int x, int i, int k){
-	//printf("SRC: ");
-	//printBinaryInt(x);
-	unsigned int r = (x&customMask(i,k))>>32-(i+k);
-	//printf("EXT: ");
-	//printBinaryInt(r);
+	printf("SRC: ");
+	printBinaryInt(x);
+	//unsigned int r = (x&customMask(i,k))>>32-(i+k);
+	unsigned int r = (x&fullMask(32-i))>>32-(i+k);
+	printf("EXT: ");
+	printBinaryInt(r);
+	printf("\n");
 	return r;	
 }
 
@@ -98,6 +103,9 @@ int main()
 	extractMask(0xFFFFFFFF,31,1);
 	extractMask(0xFFFFFFFF,32,0);
 	extractMask(0xFFFFFFFF,35,1); //caso raro
+	extractMask(0x048b6048,0,4);
+	extractMask(0x048b6048,8,12);
+	printf("\n");
 	
 	rotate(1,1);	
 	rotate(2,1);	
