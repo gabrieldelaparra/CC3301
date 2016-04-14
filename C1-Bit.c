@@ -36,6 +36,42 @@ void printBinaryInt(int b){
 	printf("\n");
 }
 
+int recursiva(unsigned int x, int s){
+	unsigned int mask = (1<<(s>>1))-1;
+	
+	// printf("Size: %i \n", s);
+	
+	// printf("x: ");
+	// printBinaryUInt(x);
+	// printf("Mask: ");
+	// printBinaryUInt(mask);
+	// printf("nMask: ");
+	// printBinaryUInt(~mask);
+	
+	
+	unsigned nMasked = (x&~mask)>>(s>>1);
+	unsigned masked = x&mask;
+	
+	// printf("nM: %i || m: %i \n", nMasked, masked);
+	
+	if	(!s) 
+		return 0;
+	
+	if(nMasked==1) 
+		return 1+(s>>1);
+	
+	else if (nMasked>1) 
+		return (s>>1) + recursiva(nMasked,(s>>1));
+	
+	else 
+		return recursiva(masked,(s>>1));
+}
+
+int bitMasSignificativo(unsigned int x){
+	printBinaryUInt(x);
+	return recursiva(x, sizeof(x)*8);
+}
+
 int minus(int x){
 	return 1 + ~x;
 }
@@ -152,47 +188,57 @@ int unset1(int n){
 
 int main()
 {
-	unset1(0x70);
-	unset1(0);
-	unset1(1);
-	printf("\n");
+	printf("MSB: %i \n", bitMasSignificativo(0x1F));
+	printf("MSB: %i \n", bitMasSignificativo(0x3F));
+	printf("MSB: %i \n", bitMasSignificativo(0x1FFF));
+	printf("MSB: %i \n", bitMasSignificativo(0x0));
+	printf("MSB: %i \n", bitMasSignificativo(0x1));
+	printf("MSB: %i \n", bitMasSignificativo(0x007FFFFF));
+	printf("MSB: %i \n", bitMasSignificativo(0x01FFFFFF));
+	printf("MSB: %i \n", bitMasSignificativo(0x11FFFFFF));
+	printf("MSB: %i \n", bitMasSignificativo(0xFFFFFFFF));
 	
-	int_Size();
-	printf("\n");
+	// unset1(0x70);
+	// unset1(0);
+	// unset1(1);
+	// printf("\n");
 	
-	bits1(0x048b6048);
-	bits1(0xFFFFFFFF);
-	bits1(0x7FFFFFFF);
-	bits1(0x1);
-	printf("\n");
+	// int_Size();
+	// printf("\n");
 	
-	extractMask(0xFFFFFFFF,0,16);
-	extractMask(0xFFFFFFFF,1,30);
-	extractMask(0xFFFFFFFF,8,16);
-	extractMask(0xFFFFFFFF,0,0);
-	extractMask(0xFFFFFFFF,0,1);	
-	extractMask(0xFFFFFFFF,0,32);	
-	extractMask(0xFFFFFFFF,31,1);
-	extractMask(0xFFFFFFFF,32,0);
-	extractMask(0x048b6048,0,4);
-	extractMask(0x048b6048,8,12);
-	printf("\n");
+	// bits1(0x048b6048);
+	// bits1(0xFFFFFFFF);
+	// bits1(0x7FFFFFFF);
+	// bits1(0x1);
+	// printf("\n");
 	
-	rotate(1,1);	
-	rotate(2,1);	
-	rotate(3,1);	
-	rotate(11,1);	
-	printf("\n");
+	// extractMask(0xFFFFFFFF,0,16);
+	// extractMask(0xFFFFFFFF,1,30);
+	// extractMask(0xFFFFFFFF,8,16);
+	// extractMask(0xFFFFFFFF,0,0);
+	// extractMask(0xFFFFFFFF,0,1);	
+	// extractMask(0xFFFFFFFF,0,32);	
+	// extractMask(0xFFFFFFFF,31,1);
+	// extractMask(0xFFFFFFFF,32,0);
+	// extractMask(0x048b6048,0,4);
+	// extractMask(0x048b6048,8,12);
+	// printf("\n");
 	
-	rotate(1,-1);	
-	rotate(2,-1);	
-	rotate(3,-1);	
-	rotate(11,-1);	
-	printf("\n");
+	// rotate(1,1);	
+	// rotate(2,1);	
+	// rotate(3,1);	
+	// rotate(11,1);	
+	// printf("\n");
 	
-	printf("%i \n",abs(-1));
-	printf("%i \n",abs(-20));
-	printf("%i \n",abs(20));
-	printf("%i \n",abs(0));
-	printf("%i \n",abs(-0));
+	// rotate(1,-1);	
+	// rotate(2,-1);	
+	// rotate(3,-1);	
+	// rotate(11,-1);	
+	// printf("\n");
+	
+	// printf("%i \n",abs(-1));
+	// printf("%i \n",abs(-20));
+	// printf("%i \n",abs(20));
+	// printf("%i \n",abs(0));
+	// printf("%i \n",abs(-0));
 }
