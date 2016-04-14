@@ -2,13 +2,55 @@
 
 int y = 20;
 
+void swapPtrVal(int** ppa, int** ppb){
+	int temp = **ppa;
+	**ppa = **ppb;
+	**ppb = temp;
+}
 
+void swapPtr(int** ppa, int** ppb){
+	int *temp = *ppa;
+	*ppa = *ppb;
+	*ppb = temp;
+}
+
+void swapPtrs(){
+	int a = 1, b = 2;
+	int* pa = &a;
+	int* pb = &b;
+	printf("a: %i \n",a);
+	printf("b: %i \n",b);
+	printf("pa: %i \n",pa);
+	printf("pb: %i \n",pb);
+	printf("*pa: %i \n",*pa);
+	printf("*pb: %i \n",*pb);
+
+	printf("\nswapPtr(&pa, &pb);\n");
+	swapPtr(&pa, &pb);
+	printf("a: %i \n",a);
+	printf("b: %i \n",b);
+	printf("pa: %i \n",pa);
+	printf("pb: %i \n",pb);
+	printf("*pa: %i \n",*pa);
+	printf("*pb: %i \n",*pb);
+
+	printf("\nswapPtrVal(&pa, &pb);\n");
+	swapPtrVal(&pa,&pb);
+	printf("a: %i \n",a);
+	printf("b: %i \n",b);
+	printf("pa: %i \n",pa);
+	printf("pb: %i \n",pb);
+	printf("*pa: %i \n",*pa);
+	printf("*pb: %i \n",*pb);
+	printf("\n");
+	
+}
 
 int main()
 {
+	swapPtrs();
 	// swapDoubles();
 	// swapInts();
-	printf("\n");
 	// desreferencia();
 	// basicoPunteros();
 	// basico();
@@ -31,10 +73,11 @@ void swapDoubles(){
 	
 	printf("a %%e: %e \n",a);
 	printf("b/%%e: %e \n",b);
-	printf("swapDoubleP(&a,&b);: \n");
+	printf("\nswapDoubleP(&a,&b);: \n");
 	swapDoubleP(&a,&b);
 	printf("a: %f \n",a);
 	printf("b: %f \n",b);
+	printf("\n");
 }
 
 void swapInt(int a, int b){
@@ -54,14 +97,15 @@ void swapInts(){
 	int b = 2;
 	printf("a: %i \n",a);
 	printf("b: %i \n",b);
-	printf("swapInt(a,b);: \n");
+	printf("\nswapInt(a,b);: \n");
 	swapInt(a,b);
 	printf("a: %i \n",a);
 	printf("b: %i \n",b);
-	printf("swapIntP(&a,&b);: \n");
+	printf("\nswapIntP(&a,&b);: \n");
 	swapIntP(&a,&b);
 	printf("a: %i \n",a);
 	printf("b: %i \n",b);
+	printf("\n");
 }
 
 int noReturn(){
