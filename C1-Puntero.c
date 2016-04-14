@@ -2,11 +2,47 @@
 
 int y = 20;
 
+int swapInt(int a, int b){
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+int swapIntP(int *a, int *b){
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void swapInts(){
+	int a = 1;
+	int b = 2;
+	printf("a: %i \n",a);
+	printf("b: %i \n",b);
+	printf("swapInt(a,b);: \n");
+	swapInt(a,b);
+	printf("a: %i \n",a);
+	printf("b: %i \n",b);
+	printf("swapIntP(&a,&b);: \n");
+	swapIntP(&a,&b);
+	printf("a: %i \n",a);
+	printf("b: %i \n",b);
+}
+
+int main()
+{
+	swapInts();
+	printf("\n");
+	// desreferencia();
+	// basicoPunteros();
+	// basico();
+}
+
 int noReturn(){
 	
 }
 
-void basicoPunteros(){
+void basico(){
 	printf("y: %i \n",y); 
 	y=10; //Probando si se le puede asignar algo a una variable global. Si se puede.
 	printf("y: %i \n",y);
@@ -14,6 +50,10 @@ void basicoPunteros(){
 	
 	printf("noReturn(): %i \n", noReturn()); //regresa 7; Cambio a 24;
 	printf("\n");
+}
+
+void basicoPunteros(){
+
 	
 	int *p;
 	int a;
@@ -73,8 +113,3 @@ void desreferencia(){
 	printf(" w: %i \n",w);
 }
 
-int main()
-{
-	// desreferencia();
-	// basicoPunteros();
-}
