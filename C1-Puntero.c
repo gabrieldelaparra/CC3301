@@ -9,8 +9,8 @@ int arrayTest(){
 	int i;
 	for(i=0;i<10;i++)
 		*(p+i) = i*i;
-	for(i=0;i<10;i++)
-		printf("p[%i]: %d",i,*(p+i));
+	for(i=0;i<=11;i++)
+		printf("p[%i]: %d\n",i,*(p+i));
 }
 
 int main()
