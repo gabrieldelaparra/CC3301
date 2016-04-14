@@ -47,8 +47,7 @@ int recursiva(unsigned int x, int s){
 	// printBinaryUInt(mask);
 	// printf("nMask: ");
 	// printBinaryUInt(~mask);
-	
-	
+		
 	unsigned nMasked = (x&~mask)>>(s>>1);
 	unsigned masked = x&mask;
 	
