@@ -2,13 +2,45 @@
 
 int y = 20;
 
-int swapInt(int a, int b){
+void swapDoubleP(double *a, double *b){
+	double temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void swapDoubles(){
+	double a = 1.1;
+	double b = 2.7;
+	printf("a %%f: %f \n",a);
+	printf("b %%f: %f \n",b);
+	
+	printf("a %%g: %g \n",a);
+	printf("b %%g: %g \n",b);
+	
+	printf("a %%e: %e \n",a);
+	printf("b/%%e: %e \n",b);
+	printf("swapDoubleP(&a,&b);: \n");
+	swapDoubleP(&a,&b);
+	printf("a: %f \n",a);
+	printf("b: %f \n",b);
+}
+
+int main()
+{
+	swapDoubles();
+	printf("\n");
+	// desreferencia();
+	// basicoPunteros();
+	// basico();
+}
+
+void swapInt(int a, int b){
 	int temp = a;
 	a = b;
 	b = temp;
 }
 
-int swapIntP(int *a, int *b){
+void swapIntP(int *a, int *b){
 	int temp = *a;
 	*a = *b;
 	*b = temp;
@@ -27,15 +59,6 @@ void swapInts(){
 	swapIntP(&a,&b);
 	printf("a: %i \n",a);
 	printf("b: %i \n",b);
-}
-
-int main()
-{
-	swapInts();
-	printf("\n");
-	// desreferencia();
-	// basicoPunteros();
-	// basico();
 }
 
 int noReturn(){
