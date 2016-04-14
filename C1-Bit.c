@@ -199,25 +199,87 @@ int unset1(int n){
 	return -1;
 }
 
+int sizeOfInt(){
+	unsigned int f = ~0;
+	int count=0;
+	while(f){
+		count++;
+		f<<=1;
+	}
+	return count; //Alternativamente return count>>3;
+}
+
+int is64Bits(){
+	return sizeof(long long)*8==64;
+}
+
+int isUnsignedChar(){
+	char c = 0xFF;
+	return (c>0);
+}
+
+
+unsigned int repBits(unsigned int x, int i, int k, unsigned int val){
+	printf("src: ");
+	printBinaryUInt(x);
+	
+	printf("val: ");
+	printBinaryUInt(val);
+	
+	int intSize = sizeof(x)*8;
+	
+	//Construir la mascara:
+	printf("intSize - i: %i \n", intSize-i-k);
+	unsigned int mask = k==32 ? (-1) : (~((-1)<<k))<<(intSize-i-k);
+	printf("Mask: ");
+	printBinaryUInt(mask);
+	
+	unsigned int elim = x&~mask;
+	printf("Elim: ");
+	printBinaryUInt(elim);
+
+	unsigned int r = elim + (val<<(intSize-i-k));
+	printf("r: ");
+	printBinaryUInt(r);
+	
+	return r;
+}
+
 int main()
 {
-	reverseMask(4);
-	reverseMask(0);
-	reverseMask(31);
-	reverseMask(32);
+	repBits(0x12345678, 0, 4, 0xf); //0xf2345678
 	printf("\n");
 	
-	fullMask(28);
-	fullMask(32);	
-	fullMask(1);
-	fullMask(0);
+	repBits(0x12345678, 4, 8, 0xaa); //0x1aa45678
 	printf("\n");
 	
-	customMask(28,4);
-	customMask(0,0);
-	customMask(1,31);
-	customMask(0,32);
+	repBits(0x00000000, 31, 1, 1); //0x00000001
 	printf("\n");
+	
+	repBits(0x89abcdef, 0, 32, 0x12345678); //
+	printf("\n");
+	
+	// printf("SizeOfInt: %i \n", sizeOfInt());
+	// printf("is64Bits: %i \n", is64Bits());
+	// printf("isUnsignedChar: %i \n", isUnsignedChar());
+	
+	// reverseMask(4);
+	// reverseMask(0);
+	// reverseMask(31);
+	// reverseMask(32);
+	// printf("\n");
+	
+	// fullMask(28);
+	// fullMask(32);	
+	// fullMask(1);
+	// fullMask(0);
+	// printf("\n");
+	
+	// customMask(28,4);
+	// customMask(0,0);
+	// customMask(1,31);
+	// customMask(0,32);
+	// printf("\n");
 	
 	// printf("PBits: %i \n", posicionBits(8,2,2));
 	// printf("PBits: %i \n", posicionBits(9,0,1));
