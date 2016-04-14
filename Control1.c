@@ -73,7 +73,7 @@ unsigned char rotate(unsigned char c, int bits){
 	printf("SRC: ");
 	printBinaryUChar(c);
 	unsigned char r = 0;
-	if(bits >= 0)
+	if(bits)
 		r = rotateRight(c);
 	else
 		r = rotateLeft(c);
@@ -149,8 +149,6 @@ int unset1(int n){
 	}
 	return -1;
 }
-
-
 
 int main()
 {
