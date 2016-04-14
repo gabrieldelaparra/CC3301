@@ -2,6 +2,18 @@
 
 int y = 20;
 
+
+
+int main()
+{
+	// swapPtrs();
+	// swapDoubles();
+	// swapInts();
+	// desreferencia();
+	// basicoPunteros();
+	// basico();
+}
+
 void swapPtrVal(int** ppa, int** ppb){
 	int temp = **ppa;
 	**ppa = **ppb;
@@ -43,17 +55,6 @@ void swapPtrs(){
 	printf("*pa: %i \n",*pa);
 	printf("*pb: %i \n",*pb);
 	printf("\n");
-	
-}
-
-int main()
-{
-	swapPtrs();
-	// swapDoubles();
-	// swapInts();
-	// desreferencia();
-	// basicoPunteros();
-	// basico();
 }
 
 void swapDoubleP(double *a, double *b){
