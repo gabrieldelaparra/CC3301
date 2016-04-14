@@ -14,13 +14,22 @@ void desreferencia(){
 	p=&v;
 	printf("assigned p=&v: %i \n",p); 
 	printf("unassigned w: %i \n",w); 
-	w=*p;
+	w=*p; //w=v;)
 	printf("assigned w=*p: %i \n",w); 
-	*p=30;
+	*p=30; //v=30;
 	printf("assigned *p=30: %i \n",*p); 
-	printf(" p: %i \n",p);
+	printf(" p: %i \n",p); //dirección de v;
 	printf("&v: %i \n",&v);
-	printf("unassigned w: %i \n",w);
+	printf(" w: %i \n",w);
+	printf(" v: %i \n",v);
+	
+	p=&w;
+	*p=40; //w=40;
+	printf(" p=&w, p: %i \n",p); //dirección de w;
+	printf("*p=40, w: %i \n",w);
+	printf(" v: %i \n",v);
+	
+	printf(" w: %i \n",w);
 }
 
 int main()
@@ -49,7 +58,7 @@ int main()
 	
 	
 	// a = 30;
-	// printf("assigned a: %i \n",a);
+	// printf("assigned a=30, a: %i \n",a);
 	// printf("//unnasigned *a: //error: invalid type argument of unary '*' (have 'int')\n"); //error: invalid type argument of unary '*' (have 'int')
 	// printf("assigned &a: %i \n",&a); //&a es la dirección de p;
 	// printf("\n");
