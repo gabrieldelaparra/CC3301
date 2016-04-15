@@ -21,8 +21,16 @@ struct punto SumaP(struct punto *u, struct punto *v){
 	return s;
 }
 
-struct punto NewPoint(float x, float y){
+struct punto NewPoint(float x, float y){ //no hay problemas con la memoria porque no se pasa como puntero.
 	struct punto n = {x,y};
+	return n;
+}
+
+struct punto *mallocPoint(float x, float y){
+	// struct punto n = malloc(sizeof(struct punto)); //ERROR
+	struct punto *n = malloc(sizeof(struct punto));
+	n->x=x;
+	n->y=y;
 	return n;
 }
 
@@ -39,7 +47,9 @@ int main()
 	struct punto w={1.0,-2.5};
 	// struct punto z={2.0,0};
 	struct punto q = NewPoint(2,0);
+	struct punto *r = mallocPoint(2,0);
 	printPnt(SumaP(&w,&q));
-	printPnt(Suma(&w,&q));
+	printPnt(Suma(&w,r));
+	free(r);
 	// basic();
 }
