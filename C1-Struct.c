@@ -62,8 +62,25 @@ void reverse3(char* s){
 	}
 }
 
+void uint2hexa(unsigned int num, char hex[]){
+	int i = 0;
+	for(i = 0; i<10; i++){
+		hex[i]=0;
+	}
+	
+	i=0;
+	for(i=0;i<8;i++){
+		hex[7-i]=(num>>(4*i))&0xF;
+		printf("%x",hex[i]);
+	}
+}
+
 int main()
 {
+	char hexa[9];
+	printf("%p\n",123u);
+	uint2hexa(123u,hexa);
+	
 	// printf("%i\n", palindrome("ABA"));
 	// printf("%i\n", palindrome("ABBA"));
 	// printf("%i\n", palindrome("ABABA"));
