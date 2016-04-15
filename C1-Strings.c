@@ -2,6 +2,15 @@
 #include <stdlib.h> //malloc
 #include <string.h> //strings
 
+
+
+int main(){
+	// ToUpper("hola");
+	// ParseHex("adf123");
+	// basic();
+	// funciones();
+}
+
 char* ToUpper(char* s){
 	printf("s: \"%s\" \n",s);
 	char t[strlen(s)+1];	
@@ -58,13 +67,6 @@ int ParseHex(char* s){
 	printf("h: %i\n",num);
 	printf("h: %p\n",num);
 	return num;
-}
-
-int main(){
-	ToUpper("hola");
-	// ParseHex("adf123");
-	// basic();
-	// funciones();
 }
 
 void basic(){
