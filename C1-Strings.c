@@ -2,7 +2,70 @@
 #include <stdlib.h> //malloc
 #include <string.h> //strings
 
+char* ToUpper(char* s){
+	printf("s: \"%s\" \n",s);
+	char t[strlen(s)+1];	
+	
+	int i=0;
+	for(i=0;i<strlen(s);i++){
+		t[i] = s[i]-'a'+'A';
+	}
+	t[strlen(s)] = 0;
+	printf("t: \"%s\" \n",t);
+}
 
+int ParseHex(char* s){
+	printf("s: \"%s\" \n",s);	
+	int i = 0;
+	int num = 0;
+	int sLen = strlen(s);
+	printf("sLen: %i\n",sLen);
+	while(*(s+i)!=0){
+		printf("c: \'%c\' \n",*(s+i));
+		int parse = 0;
+		switch(*(s+i)){			
+			case '0':
+			case '1':
+			case '2':
+			case '3':
+			case '4':
+			case '5':
+			case '6':
+			case '7':
+			case '8':
+			case '9':
+			parse = (*(s+i)-'0')<<((sLen-i-1)*4);
+			printf("p: %p \n",parse);
+			num += parse;
+			break;
+			
+			case 'a':
+			case 'b':
+			case 'c':
+			case 'd':
+			case 'e':
+			case 'f':
+			parse = (*(s+i)-'a'+10)<<((sLen-i-1)*4);
+			printf("p: %p \n",parse);
+			num += parse;
+			break;
+			
+			default:
+			break;
+		}
+		i++;
+	}
+	printf("h: %i\n",num);
+	printf("h: %p\n",num);
+	return num;
+}
+
+int main(){
+	ToUpper("hola");
+	// ParseHex("adf123");
+	// basic();
+	// funciones();
+}
 
 void basic(){
 	char *s = "chao";
@@ -134,9 +197,4 @@ void funciones(){
 	printf("tLen: %d\n",tLen); //9
 	
 	printf("\n");
-}
-
-int main(){
-	// basic();
-	// funciones();
 }
