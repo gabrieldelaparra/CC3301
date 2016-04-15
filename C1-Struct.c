@@ -2,16 +2,30 @@
 #include <strings.h> //strings
 #include <stdlib.h> //malloc
 
-struct punto{
-	float x;
-	float y;
-};
+
+
+int main()
+{
+	struct punto w={1.0,-2.5};
+	// struct punto z={2.0,0};
+	struct punto q = NewPoint(2,0);
+	struct punto *r = mallocPoint(2,0);
+	
+	printPnt(SumaP(&w,&q));
+	printPnt(Suma(&w,r));
+	free(r);
+	// basic();
+}
+
+typedef struct punto{
+	float x, y;
+} Punto;
 
 void printPnt(struct punto p){
 	printf("p=(%f, %f)\n",p.x,p.y);	
 }
 
-struct punto Suma(struct punto *u, struct punto *v){
+Punto Suma(Punto *u, Punto *v){
 	struct punto s={(*u).x+(*v).x,(*u).y+(*v).y};
 	return s;
 }
@@ -40,16 +54,4 @@ struct punto z={1.0,-2.5};
 
 z.x=2.0;
 printf("z=(%f, %f)\n",z.x,z.y);	
-}
-
-int main()
-{
-	struct punto w={1.0,-2.5};
-	// struct punto z={2.0,0};
-	struct punto q = NewPoint(2,0);
-	struct punto *r = mallocPoint(2,0);
-	printPnt(SumaP(&w,&q));
-	printPnt(Suma(&w,r));
-	free(r);
-	// basic();
 }
