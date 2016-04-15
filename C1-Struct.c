@@ -2,6 +2,128 @@
 #include <strings.h> //strings
 #include <stdlib.h> //malloc
 
+
+int palindrome(char* s){
+	int size = strlen(s);
+	int i = 0;
+	for(i=0;i<(size/2);i++){
+		if(s[i]!=s[size-1-i]) return 0;
+	}
+	return 1;
+}
+
+int mystrcmp(char* s1, char* s2){
+	int l1 = strlen(s1);
+	int l2 = strlen(s2);
+	int i=0;
+	int max = l2;
+	if(l1>l2)max=l1;
+	
+	for(i=0;i<max;i++){
+		if(s1[i]>s2[i]) return 1;
+		else if(s1[i]<s2[i]) return -1;
+	}
+	return 0;
+}
+
+char* reverse(char* s){
+	int len = strlen(s);
+	char* r = (char*)malloc(sizeof(char)*(len+1)); //Considerando el cero final;
+	int i = 0;
+	
+	for(i = 0;i<len;i++){
+		*(r+i)=*(s+len-1-i);
+	}
+	*(r+len)=0;
+	return r;
+}
+
+void reverse2(char* s){
+	int len = strlen(s);	
+	int i = 0;
+	char c = 0;
+	for(i = 0; i < (len/2); i++){
+		c=*(s+i);
+		*(s+i) = *(s+len-1-i);
+		*(s+len-1-i) = c;
+	}
+}
+
+void reverse3(char* s){
+	char c;
+	char *p= s+ strlen(s) -1;
+	while(p>s){
+		c=*s;
+		*s=*p;
+		*p=c;
+		
+		s++;
+		p--;
+	}
+}
+
+int main()
+{
+	// printf("%i\n", palindrome("ABA"));
+	// printf("%i\n", palindrome("ABBA"));
+	// printf("%i\n", palindrome("ABABA"));
+	// printf("%i\n", palindrome("ABABC"));
+	// printf("\n");
+	
+	// printf("%i\n", palindrome("A"));
+	// printf("%i\n", palindrome("AC"));
+	// printf("\n");
+	
+	// printf("%i\n", mystrcmp("A","B"));
+	// printf("%i\n", mystrcmp("B","A"));
+	// printf("%i\n", mystrcmp("A","A"));
+	// printf("\n");
+	
+	// printf("%i\n", mystrcmp("AAAB","AAAA"));
+	// printf("%i\n", mystrcmp("AAAA","AAAB"));
+	// printf("%i\n", mystrcmp("AAAA","AAAA"));
+	// printf("\n");
+	
+	// char* p = reverse("ALAMEDA");
+	// printf("%s\n",p);
+	// free(p);
+	// printf("\n");
+	
+	// char s[] = {'h','o','l','a',0};	
+	// printf("%s\n",s);
+	// reverse2(s);
+	// printf("%s\n",s);
+	// printf("\n");
+	
+	
+	// int uno = 1;
+	// int* p = &uno;
+	// printf("%i\n",p);
+	// printf("%i\n",&uno);
+	// printf("%i\n",*p);
+	// printf("%i\n",&p);
+	
+	
+	// int* p2 = 1;
+	// printf("%i\n",p2);
+	// printf("%i\n",*p2);
+	// printf("%i\n",&p2);
+	
+	
+	// insertNodes();
+
+	// struct punto w={1.0,-2.5};
+	// struct punto z={2.0,0};
+	// struct punto q = NewPoint(2,0);
+	// struct punto *r = mallocPoint(2,0);
+	
+	// printPnt(SumaP(&w,&q));
+	// printPnt(Suma(&w,r));
+	// free(r);
+	// basic();
+}
+
+
 typedef struct node{
 	int value;
 	struct node *next;
@@ -97,21 +219,6 @@ void insertNodes(){
 	printf("\n");
 }
 
-
-int main()
-{
-	insertNodes();
-
-	// struct punto w={1.0,-2.5};
-	// struct punto z={2.0,0};
-	// struct punto q = NewPoint(2,0);
-	// struct punto *r = mallocPoint(2,0);
-	
-	// printPnt(SumaP(&w,&q));
-	// printPnt(Suma(&w,r));
-	// free(r);
-	// basic();
-}
 
 typedef struct punto{
 	float x, y;
