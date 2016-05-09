@@ -9,8 +9,7 @@ typedef struct{
 	pthread_cond_t cond;
 } Est;
 
-Est *E;
-char *zero = {0};
+Est *E = NULL;
 
 int ubicar(char *nom, int k){
 	int f = -1;
@@ -20,7 +19,6 @@ int ubicar(char *nom, int k){
 			c++;
 			if(c==k){
 				f=i+1-c;
-				// printf("f: %d\n",f);
 				return f;
 			}
 		}
@@ -43,7 +41,6 @@ int reservar(char *nom, int k){
 		E->P[p+i] = malloc(strlen(nom));
 		E->P[p+i] = nom;
 	}
-	// printf("p: %d\n",p);
 	pthread_cond_broadcast(&E->cond);
 	pthread_mutex_unlock(&E->m);
 	return p;
@@ -52,8 +49,9 @@ int reservar(char *nom, int k){
 void liberar(char *nom){
 	for(int i=0; i<5;i++){
 		if(E->P[i] == nom){
-			E->P[i] = NULL;
-			//Si pongo un free, se rompe!!
+			printf("FREE: %d\n",i);	
+			// free(E->P[i]); //Si pongo un free(E->P[i]), crashea.
+			E->P[i] = NULL; //Esto funciona pero no es lo deseado !
 		}
 	}	
 }
@@ -82,11 +80,20 @@ int main(){
 	
 	printE();
 	
+	//!!
 	liberar("nom");
 	
 	printE();
 	
-	a = reservar("nom3",2);
+	a = reservar("nom3",1);
+	printf("%d\n",a);	
+	printE();	
+	
+	a = reservar("nom4",1);
+	printf("%d\n",a);	
+	printE();	
+	
+	a = reservar("nom5",1);
 	printf("%d\n",a);	
 	printE();	
 }
