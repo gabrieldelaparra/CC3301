@@ -6,6 +6,9 @@
 *.user
 *.sln.docstates
 
+*.exe
+*.stackdump
+
 # Build results
 
 [Dd]ebug/
