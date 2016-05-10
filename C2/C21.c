@@ -5,8 +5,8 @@
 
 typedef struct{
 	char **P;
-	pthread_mutex_t m;
-	pthread_cond_t cond;
+	pthread_mutex_t m;//= PTHREAD_MUTEX_INITIALIZER;
+	pthread_cond_t cond;// = PTHREAD_COND_INITIALIZER;
 } Est;
 
 Est *E = NULL;
@@ -38,7 +38,8 @@ int reservar(char *nom, int k){
 	}
 	
 	for(int i = 0; i<k;i++){
-		E->P[p+i] = malloc(strlen(nom));
+		printf("MALLOC p+i: %d\n",p+i);
+		E->P[p+i] = (char*)malloc(strlen(nom)+1); //+1 por el final del string;
 		E->P[p+i] = nom;
 	}
 	pthread_cond_broadcast(&E->cond);
@@ -50,8 +51,8 @@ void liberar(char *nom){
 	for(int i=0; i<5;i++){
 		if(E->P[i] == nom){
 			printf("FREE: %d\n",i);	
-			// free(E->P[i]); //Si pongo un free(E->P[i]), crashea.
-			E->P[i] = NULL; //Esto funciona pero no es lo deseado !
+			free(E->P[i]); //Con free(E->P[i]), crashea.
+			// E->P[i] = NULL; //Esto funciona, pero no es lo deseado !
 		}
 	}	
 }
@@ -63,15 +64,16 @@ void printE(){
 	printf("\n");
 }
 
-int main(){
-	E = malloc(sizeof(Est));
-	E->m = PTHREAD_MUTEX_INITIALIZER;
-	E->cond = PTHREAD_COND_INITIALIZER;
-	E->P = malloc(5*sizeof(char*));
+int main(int argc, char *argv[]){
+	E = (Est*)malloc(sizeof(Est));
+	pthread_mutex_init(&E->m, NULL);
+	pthread_cond_init(&E->cond, NULL);
+	// E->cond = PTHREAD_COND_INITIALIZER;
+	E->P = (char**)malloc(5*sizeof(char*));
 
 	printE();
 	
-	int a = reservar("nom",3);
+	int a = reservar("nom",1);
 	printf("%d\n",a);	
 	printE();
 	
@@ -82,10 +84,10 @@ int main(){
 	
 	//!!
 	liberar("nom");
-	
+	printf("EndFREE\n");
 	printE();
 	
-	a = reservar("nom3",1);
+	a = reservar("nom3",2);
 	printf("%d\n",a);	
 	printE();	
 	
