@@ -1,7 +1,9 @@
-#include <pthread.h>
-#include <stdio.h>
 #include <string.h>
+#include <pthread.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+#include "reserva.h"
 
 typedef struct{
 	char **P;
@@ -52,8 +54,8 @@ void liberar(char *nom){
 	for(int i=0; i<5;i++){
 		if(E->P[i] == nom){
 			printf("FREE: %d\n",i);	
-			// free(E->P[i]); //Con free(E->P[i]), crashea.
-			E->P[i] = NULL; //Esto funciona, pero no es lo deseado !
+			free(E->P[i]); //Con free(E->P[i]), crashea.
+			// E->P[i] = NULL; //Esto funciona, pero no es lo deseado !
 		}
 	}	
 }
@@ -64,39 +66,4 @@ void printE(){
 	}
 	printf("\n");
 }
-
-int main(int argc, char *argv[]){
-	E = (Est*)malloc(sizeof(Est));
-	pthread_mutex_init(&E->m, NULL);
-	pthread_cond_init(&E->cond, NULL);
-	// E->cond = PTHREAD_COND_INITIALIZER;
-	E->P = (char**)malloc(5*sizeof(char*));
-
-	printE();
-	
-	int a = reservar("nom",1);
-	printf("%d\n",a);	
-	printE();
-	
-	a = reservar("nom2",2);
-	printf("%d\n",a);
-	
-	printE();
-	
-	//!!
-	liberar("nom");
-	printf("EndFREE\n");
-	printE();
-	
-	// a = reservar("nom3",2);
-	// printf("%d\n",a);	
-	// printE();	
-	
-	// a = reservar("nom4",1);
-	// printf("%d\n",a);	
-	// printE();	
-	
-	// a = reservar("nom5",1);
-	// printf("%d\n",a);	
-	// printE();	
-}
+/* Implemente aca las funciones reservar y liberar */
