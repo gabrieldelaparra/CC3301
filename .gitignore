@@ -8,6 +8,7 @@
 
 *.exe
 *.stackdump
+*.o
 
 # Build results
 
