@@ -13,7 +13,17 @@ typedef struct{
 
 Est *E = NULL;
 
+void myInit(){
+	if(E == NULL){
+		E = (Est*)malloc(sizeof(Est));
+		pthread_mutex_init(&E->m, NULL);
+		pthread_cond_init(&E->cond, NULL);
+		E->P = (char**)malloc(5*sizeof(char*));
+	}
+}
+
 int ubicar(char *nom, int k){
+	myInit();
 	int f = -1;
 	int c = 0;
 	for(int i=0; i<5; i++){
@@ -32,6 +42,8 @@ int ubicar(char *nom, int k){
 }
 
 int reservar(char *nom, int k){
+	myInit();
+	
 	pthread_mutex_lock(&E->m);
 	int p = ubicar(nom,k);
 	//Ojo con los paréntesis, el while(p = ubicar(nom,k) == -1) daba siempre p=0;
@@ -40,9 +52,9 @@ int reservar(char *nom, int k){
 	}
 	
 	for(int i = 0; i<k;i++){
-		printf("MALLOC p+i: %d\n",p+i);
+		// printf("MALLOC p+i: %d\n",p+i);
 		E->P[p+i] = (char*)malloc(strlen(nom)+1); //+1 por el final del string;
-		strcpy(nom, E->P[p+i]);
+		strcpy(E->P[p+i], nom);
 		// E->P[p+i] = nom;
 	}
 	pthread_cond_broadcast(&E->cond);
@@ -51,13 +63,18 @@ int reservar(char *nom, int k){
 }
 
 void liberar(char *nom){
+	pthread_mutex_lock(&E->m);
 	for(int i=0; i<5;i++){
-		if(E->P[i] == nom){
-			printf("FREE: %d\n",i);	
-			free(E->P[i]); //Con free(E->P[i]), crashea.
-			// E->P[i] = NULL; //Esto funciona, pero no es lo deseado !
+		if(E->P[i] != NULL){
+			if(strcmp(E->P[i],nom)==0){
+				// printf("FREE: %d\n",i);	
+				free(E->P[i]); //Con free(E->P[i]), crashea.
+				E->P[i] = NULL; //Esto funciona, pero no es lo deseado !
+			}
 		}
 	}	
+	pthread_cond_broadcast(&E->cond);
+	pthread_mutex_unlock(&E->m);
 }
 
 void printE(){

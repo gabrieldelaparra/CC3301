@@ -18,6 +18,7 @@ void *carro(void *ptr) {
   return NULL;
 }
 
+
 int main() {
   int lugar_juan= reservar("juan", 1);
   printf("juan reservo el lugar %d\n", lugar_juan);
@@ -26,7 +27,7 @@ int main() {
             lugar_juan);
     exit(1);
   }
-
+	printE();
   int lugar_eva= reservar("eva", 2);
   printf("eva reservo el lugar %d\n", lugar_eva);
   if (lugar_eva!=1) {
@@ -34,7 +35,7 @@ int main() {
             lugar_eva);
     exit(2);
   }
-
+printE();
   pthread_t hebra_pato;
   Args args_pato= { "pato", 3, -1 };
   pthread_create(&hebra_pato, NULL, carro, &args_pato);
@@ -46,7 +47,7 @@ int main() {
             args_pato.lugar);
     exit(3);
   }
-
+printE();
   int lugar_ana= reservar("ana", 1);
   printf("ana reservo el lugar %d\n", lugar_ana);
   if (lugar_ana!=3) {
@@ -54,7 +55,7 @@ int main() {
             lugar_ana);
     exit(4);
   }
-
+printE();
   pthread_t hebra_pedro;
   Args args_pedro= { "pedro", 5, -1 };
   pthread_create(&hebra_pedro, NULL, carro, &args_pedro);
@@ -67,17 +68,23 @@ int main() {
     exit(5);
   }
 
+printE();
   liberar("eva");
   printf("eva libera su lugar\n");
+printE();
+
   if (args_pato.lugar!=-1) {
     fprintf(stderr, "pato debio haber esperado, pero recibio\n");
     fprintf(stderr, "incorrectamente el lugar %d\n",
             args_pato.lugar);
     exit(6);
   }
-
+  
+printE();
   liberar("juan");
-  printf("eva libera su lugar\n");
+  printf("juan libera su lugar\n");
+printE();
+
   pthread_join(hebra_pato, NULL);
   printf("pato reservo el lugar %d\n", args_pato.lugar);
   if (args_pato.lugar!=0) {
@@ -85,7 +92,7 @@ int main() {
             args_pato.lugar);
     exit(7);
   }
-
+printE();
   liberar("pato");
   printf("pato libera su lugar\n");
   if (args_pedro.lugar!=-1) {
@@ -94,7 +101,7 @@ int main() {
             args_pedro.lugar);
     exit(8);
   }
-
+printE();
   /* Al liberar ana usamos una copia del string "ana".  En el enunciado
    * se pide que se haga una copia del string y por lo tanto en la
    * comparacion se debe usar strcmp y no la igualdad de punteros.
@@ -110,10 +117,10 @@ int main() {
             args_pedro.lugar);
     exit(9);
   }
-
+printE();
   liberar("pedro");
   printf("pedro libera su lugar\n");
-
+printE();
   printf("\nFelicitaciones: su solucion funciona de acuerdo al enunciado.\n");
 
   return 0;
