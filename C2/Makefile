@@ -1,3 +1,3 @@
 CFLAGS= -g -Wall -pedantic -std=c99 -lpthread
 
-all: C21 C22
+all: C21 C22 C23
