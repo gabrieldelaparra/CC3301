@@ -45,7 +45,7 @@ double integral_g_dx_dy_par(double xi, double xf, int n, double yi, double yf, i
 	
 	for(i=0; i<L;i++){
 		pthread_join(ts[i], NULL);
-		result += prr[i]->res;
+		result += prr[i]->	res;
 	}
 	return result;
 }
