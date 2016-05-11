@@ -23,7 +23,7 @@ double g(double x, double y) {
 
 int main() {
   double xi= 0.0, xf= 0.5;
-  double yi= 0.0, yf= 1.0;
+  double yi= 0, yf= 1;
   double numerico= integral_g_dx_dy(xi, xf, 100, yi, yf, 200);
 
   double algebraico= - ( sin(xf+yf) - sin(xf+yi) ) +
