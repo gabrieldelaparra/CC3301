@@ -1,0 +1,40 @@
+alberto
+ana
+diego
+jose
+juan
+maria
+monica
+pedro
+tatiana
+vero
+1.000000
+2.000000
+3.000000
+4.000000
+5.000000
+6.000000
+7.000000
+8.000000
+9.000000
+10.000000
+vero 1
+jose 2
+juan 3
+diego 4
+pedro 5
+tatiana 6
+monica 7
+maria 8
+alberto 9
+ana 10
+alberto     9
+ana        10
+diego       4
+jose        2
+juan        3
+maria       8
+monica      7
+pedro       5
+tatiana     6
+vero        1

@@ -1,0 +1,9 @@
+rm -f test-out.txt
+./test-sort > test-out.txt
+if diff test-out.txt out.txt
+then
+  echo "Felicitaciones: su tarea funciona"
+else
+  echo "Lo siento, su tarea no funciona: hay diferencias entre la salida"
+  echo "estandar de su programa y la salida de referencia (out.txt)"
+fi

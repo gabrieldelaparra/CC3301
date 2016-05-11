@@ -1,0 +1,10 @@
+pedro       5
+juan        3
+ana        10
+vero        1
+diego       4
+jose        2
+monica      7
+alberto     9
+maria       8
+tatiana     6
