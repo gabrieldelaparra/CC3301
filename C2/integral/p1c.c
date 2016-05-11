@@ -27,25 +27,25 @@ double integral_g_dx_dy_par(double xi, double xf, int n, double yi, double yf, i
 	int i = 0;
 	double s = (yf-yi)/L;
 	
-	Par prr[8];
+	// Par prr[8];
 	
-	// Par **prr = (Par **) malloc(L*sizeof(Par*));
+	Par **prr = (Par **) malloc(L*sizeof(Par*));
 	
 	for(i = 0;i<L;i++){
 		// prr[i] = (Par){xi,xf,yi+(s*i),yi+(s*(i+1)),n,m/L};
-		// prr[i] = (Par*) malloc(sizeof(Par));
-		prr[i].xi = xi;
-		prr[i].xf = xf;
-		prr[i].yi = yi+(s*i);
-		prr[i].yf = yi+(s*(i+1));
-		prr[i].m = m/L;
-		prr[i].n = n;
-		pthread_create(&ts[i],NULL, compFun, &prr[i]);
+		prr[i] = (Par*) malloc(sizeof(Par));
+		prr[i]->xi = xi;
+		prr[i]->xf = xf;
+		prr[i]->yi = yi+(s*i);
+		prr[i]->yf = yi+(s*(i+1));
+		prr[i]->m = m/L;
+		prr[i]->n = n;
+		pthread_create(&ts[i],NULL, compFun, prr[i]);
 	}
 	
 	for(i=0; i<L;i++){
 		pthread_join(ts[i], NULL);
-		result += prr[i].res;
+		result += prr[i]->res;
 	}
 	return result;
 }
