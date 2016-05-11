@@ -16,7 +16,7 @@ double integral_g_dx(double xi, double xf, double y, int n) {
 }
 
 double integral_g_dx_aux(void *p, double y){
-	Param *par = (Param*)p;
+	Param *par = (Param *)p;
 	return integral_g_dx(par->xi,par->xf,y,par->n);
 	// // Alternativamente:
 	// double xi = ((Param *)p)->xi;
