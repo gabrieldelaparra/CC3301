@@ -6,6 +6,7 @@ typedef struct {
 	int n;
 } Param;
 
+
 double g_aux(void *ptr, double x) {
 	double y= *(double *)ptr;
 	return g(x, y);
@@ -25,13 +26,18 @@ double integral_g_dx_aux(void *p, double y){
 	// return integral_g_dx(xi,xf,y,n);
 }
 
+
 double integral_g_dx_dy(double xi, double xf, int n, double yi, double yf, int m){
-	Param p = {xi, xf, n}; //Tambien aplica, más corta!
-	
+	// Param p = {xi, xf, n}; //Tambien aplica, más corta!
+	// return integral(integral_g_dx_aux, &p, yi, yf, m);
 	// //Alternativamente:
-	// Param *p = (Param*) malloc(sizeof(Param));
-	// p->xi=xi;
-	// p->xf=xf;
-	// p->n=n;
-	return integral(integral_g_dx_aux, &p, yi, yf, m);
+
+
+
+
+	Param *p = (Param*) malloc(sizeof(Param));
+	p->xi=xi;
+	p->xf=xf;
+	p->n=n;
+	return integral(integral_g_dx_aux, p, yi, yf, m);
 }

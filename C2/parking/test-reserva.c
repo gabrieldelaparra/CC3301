@@ -20,6 +20,7 @@ void *carro(void *ptr) {
 
 
 int main() {
+	inicializar();
   int lugar_juan= reservar("juan", 1);
   printf("juan reservo el lugar %d\n", lugar_juan);
   if (lugar_juan!=0) {
