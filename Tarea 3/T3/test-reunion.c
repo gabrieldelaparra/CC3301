@@ -62,7 +62,7 @@ void *testEnun(void *ptr) {
   return NULL;
 }
 
-#define N_REUNIONES 50
+#define N_REUNIONES 30
 
 int main() {
   {
